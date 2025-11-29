@@ -1,10 +1,9 @@
 📘 Comet Analyzer — Instrucciones de Uso
 Este proyecto analiza un espectro de un cometa a partir de un archivo de texto y detecta los elementos químicos presentes según sus líneas espectrales.
-A continuación se explica cómo inicializar el proyecto y cómo ejecutar el programa.
 ✅ 1. Requisitos
 Asegúrate de tener instalado:
 CMake (≥ 3.10)
-Compilador C (clang o gcc)
+Compilador C (gcc o clang)
 Puedes comprobarlo con:
 cmake --version
 gcc --version
@@ -12,31 +11,36 @@ gcc --version
 Desde la carpeta raíz del proyecto (comet_analyzer_v3/), ejecuta:
 cmake --build build
 Esto:
-Genera todos los archivos necesarios
+Genera los archivos necesarios
 Compila el código en build/
 Crea el ejecutable comet_analyzer
 ✅ 3. Ejecutar el programa
-El programa necesita un archivo con los datos del espectro.
-Ejemplo de archivo (spectrum.txt):
+El programa necesita un archivo de espectro en texto plano.
+📄 Ejemplo de spectrum.txt:
 400.1, 0.12
 434.0, 0.87
 486.0, 0.90
 589.2, 1.00
 656.0, 0.75
 777.0, 0.95
-Para ejecutar el analizador:
+▶️ Ejecutar el analizador:
 ./build/comet_analyzer spectrum.txt
-📌 Notas importantes
-El archivo debe contener pares de valores:
-longitud_de_onda, intensidad
-El programa detecta picos automáticamente.
-Los resultados muestran:
+🧪 ¿Qué hace el programa?
+Carga todos los valores del espectro (longitud de onda e intensidad).
+Detecta automáticamente los picos.
+Compara los picos con la base de datos de elementos.
+Devuelve:
 Elemento detectado
 Pico observado
 Diferencia con la línea teórica
 Probabilidad estimada
-🆘 Problemas comunes
-❗ “Uso: ./build/comet_analyzer <archivo-espectro>”
-→ No pasaste el nombre del archivo.
+🔧 Problemas comunes
+❗ “Uso: ./build/comet_analyzer”
+No pasaste el nombre del archivo.
+Ejemplo correcto:
+./build/comet_analyzer spectrum.txt
 ❗ “No se pudo abrir archivo”
-→ Asegúrate de que spectrum.txt exista y esté en la misma carpeta donde ejecutas el comando.
+Revisa:
+Que spectrum.txt exista.
+Que esté en la misma carpeta donde ejecutas el comando.
+Que tenga el formato correcto.
