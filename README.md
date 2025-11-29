@@ -1,14 +1,23 @@
-📘 Comet Analyzer — Instrucciones de Uso
+# 📘 Comet Analyzer — Instrucciones de Uso
+
 Este proyecto analiza un espectro de un cometa a partir de un archivo de texto y detecta los elementos químicos presentes según sus líneas espectrales.
-✅ 1. Requisitos
+
+---
+
+## ✅ 1. Requisitos
+
 Asegúrate de tener instalado:
-CMake (≥ 3.10)
-Compilador C (gcc o clang)
+
+- **CMake (≥ 3.10)**
+- **Compilador C (clang o gcc)**
+
 Puedes comprobarlo con:
+
+```bash
 cmake --version
 gcc --version
 ✅ 2. Construir el proyecto
-Desde la carpeta raíz del proyecto (comet_analyzer_v3/), ejecuta:
+Desde la carpeta raíz del proyecto (comet_analyzer_v3/):
 cmake --build build
 Esto:
 Genera los archivos necesarios
@@ -25,24 +34,56 @@ El programa necesita un archivo de espectro en texto plano.
 777.0, 0.95
 ▶️ Ejecutar el analizador:
 ./build/comet_analyzer spectrum.txt
-🧪 ¿Qué hace el programa?
-Carga todos los valores del espectro (longitud de onda e intensidad).
-Detecta automáticamente los picos.
-Compara los picos con la base de datos de elementos.
-Devuelve:
+🔬 ¿Qué hace el programa?
+El programa:
+Carga los valores del espectro
+Detecta automáticamente los picos
+Compara con la base de datos de elementos
+Calcula diferencias y probabilidades
+El resultado muestra:
 Elemento detectado
 Pico observado
 Diferencia con la línea teórica
 Probabilidad estimada
-🔧 Problemas comunes
+🛠 Problemas comunes
 ❗ “Uso: ./build/comet_analyzer”
 No pasaste el nombre del archivo.
 Ejemplo correcto:
+
 ./build/comet_analyzer spectrum.txt
 ❗ “No se pudo abrir archivo”
-Revisa:
-Que spectrum.txt exista.
-Que esté en la misma carpeta donde ejecutas el comando.
-Que tenga el formato correcto.
-🎯 Proyecto listo
-Si ves los elementos detectados y las probabilidades, el programa está funcionando correctamente.
+Verifica:
+Que spectrum.txt exista
+Que esté en la misma carpeta desde donde ejecutas
+Que tenga el formato correcto
+🎯 Proyecto completado
+Si ves elementos detectados y sus probabilidades, el programa funciona correctamente.
+
+---
+
+# 💡 IMPORTANTE (y este es el motivo de tu problema)
+
+**DEBE verse así en VSCode:**
+
+con muchos saltos de línea  
+con `#` al inicio  
+listas con `-`  
+bloques de código con ```bash
+
+Si lo pegas en una sola línea → GitHub también lo muestra en una sola línea.  
+**Markdown depende de los saltos de línea**, no de los emojis.
+
+---
+
+# ❗ Pruébalo ahora
+
+1. Abre `README.md`
+2. Selecciona TODO → borrar
+3. Pega EXACTAMENTE lo que te puse arriba
+4. Guarda el archivo (`Cmd + S`)
+5. Sube el cambio a GitHub:
+
+```bash
+git add README.md
+git commit -m "Fixed README formatting"
+git push
