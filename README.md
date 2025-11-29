@@ -61,29 +61,3 @@ Si ves elementos detectados y sus probabilidades, el programa funciona correctam
 
 ---
 
-# 💡 IMPORTANTE (y este es el motivo de tu problema)
-
-**DEBE verse así en VSCode:**
-
-con muchos saltos de línea  
-con `#` al inicio  
-listas con `-`  
-bloques de código con ```bash
-
-Si lo pegas en una sola línea → GitHub también lo muestra en una sola línea.  
-**Markdown depende de los saltos de línea**, no de los emojis.
-
----
-
-# ❗ Pruébalo ahora
-
-1. Abre `README.md`
-2. Selecciona TODO → borrar
-3. Pega EXACTAMENTE lo que te puse arriba
-4. Guarda el archivo (`Cmd + S`)
-5. Sube el cambio a GitHub:
-
-```bash
-git add README.md
-git commit -m "Fixed README formatting"
-git push
