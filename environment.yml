@@ -1,0 +1,8 @@
+name: cproj
+channels:
+  - conda-forge
+dependencies:
+  - cmake
+  - c-compiler
+  - make
+  - fftw
