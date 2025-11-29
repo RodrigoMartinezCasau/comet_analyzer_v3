@@ -44,3 +44,5 @@ Revisa:
 Que spectrum.txt exista.
 Que esté en la misma carpeta donde ejecutas el comando.
 Que tenga el formato correcto.
+🎯 Proyecto listo
+Si ves los elementos detectados y las probabilidades, el programa está funcionando correctamente.
