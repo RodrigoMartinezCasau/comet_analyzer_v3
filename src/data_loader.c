@@ -1,35 +1,15 @@
 // data_loader.c
-// ------------------------------------------------------
-// Implementa la función load_spectrum, que lee un archivo
-// de texto con líneas del estilo:
-//
-//   400.5 0.12
-//   401.1 0.09
-//
-// (dos números separados por espacio) y devuelve un array
-// dinámico de DataPoint.
-// ------------------------------------------------------
+// Lee archivo de espectro flexible y devuelve array dinámico
 
-#include <stdio.h>      // fopen, fscanf, fclose
-#include <stdlib.h>     // malloc, free
+#include <stdio.h>
+#include <stdlib.h>
 #include "data_loader.h"
 
-// load_spectrum
-// ------------------------------------------------------
-// filename: path al archivo (ej: "spectrum.txt")
-// count: salida -> número total de puntos leídos
-//
-// Devuelve:
-//   - Un array dinámico de DataPoint si todo sale bien
-//   - NULL si hubo un error
-// ------------------------------------------------------
 DataPoint* load_spectrum(const char *filename, int *count) {
-    *count = 0;   // Inicializamos el contador a 0
+    *count = 0;
 
     FILE *file = fopen(filename, "r");
-
-    if (file == NULL) {
-        // Archivo no encontrado o sin permisos
+    if (!file) {
         printf("Error: No se pudo abrir el archivo '%s'\n", filename);
         return NULL;
     }
@@ -37,9 +17,8 @@ DataPoint* load_spectrum(const char *filename, int *count) {
     double w, i;
     int lines = 0;
 
-    // Paso 1: Contar cuántas líneas válidas tiene el archivo.
-    // Formato flexible: acepta "400.5 0.12", "400.5, 0.12", "400.5 , 0.12", etc.
-    while (fscanf(file, "%lf%*[ ,]%lf", &w, &i) == 2) {
+    // Contar líneas válidas
+    while (fscanf(file, "%lf%*[ ,\t]%lf", &w, &i) == 2) {
         lines++;
     }
 
@@ -49,29 +28,23 @@ DataPoint* load_spectrum(const char *filename, int *count) {
         return NULL;
     }
 
-    // Volvemos al inicio del archivo para leer de verdad los datos
     rewind(file);
 
-    // Paso 2: Reservamos memoria dinámica para TODOS los puntos
     DataPoint *data = malloc(sizeof(DataPoint) * lines);
-
-    if (data == NULL) {
+    if (!data) {
         printf("Error: No hay memoria suficiente.\n");
         fclose(file);
         return NULL;
     }
 
-    // Paso 3: Leer de verdad los datos e introducirlos en el array
     int index = 0;
-
-    while (fscanf(file, "%lf%*[ ,]%lf", &w, &i) == 2) {
-        data[index].wavelength = w;  // Guardamos longitud de onda
-        data[index].intensity  = i;  // Guardamos intensidad
+    while (fscanf(file, "%lf%*[ ,\t]%lf", &w, &i) == 2) {
+        data[index].wavelength = w;
+        data[index].intensity = i;
         index++;
     }
 
-    fclose(file);       // Cerramos archivo
-    *count = lines;     // Guardamos el número total de puntos
-
-    return data;        // Devolvemos el array dinámico
+    fclose(file);
+    *count = lines;
+    return data;
 }

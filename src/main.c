@@ -6,9 +6,6 @@
 
 int main(int argc, char** argv) {
 
-    // ------------------------------------------
-    // 1. Comprobar argumentos
-    // ------------------------------------------
     if (argc < 2) {
         printf("Uso: %s <archivo-espectro>\n", argv[0]);
         return 1;
@@ -17,9 +14,6 @@ int main(int argc, char** argv) {
     char* filename = argv[1];
     printf("[INFO] Analizando espectro: %s\n", filename);
 
-    // ------------------------------------------
-    // 2. Cargar espectro desde archivo
-    // ------------------------------------------
     int count = 0;
     DataPoint* spectrum = load_spectrum(filename, &count);
 
@@ -30,18 +24,12 @@ int main(int argc, char** argv) {
 
     printf("[INFO] %d puntos de datos cargados correctamente.\n", count);
 
-    // ------------------------------------------
-    // 3. Cargar base de datos de elementos
-    // ------------------------------------------
     int element_count = 0;
     Element* elements = get_known_elements(&element_count);
 
     printf("[INFO] %d elementos químicos cargados.\n", element_count);
 
-    // ------------------------------------------
-    // 4. Detectar picos
-    // ------------------------------------------
-    double peaks[64];   // hasta 64 picos
+    double peaks[64];
     int peak_count = detect_peaks(spectrum, count, peaks, 64);
 
     printf("[INFO] %d picos detectados:\n", peak_count);
@@ -49,17 +37,11 @@ int main(int argc, char** argv) {
         printf("  - Pico en %.2f nm\n", peaks[i]);
     }
 
-    // ------------------------------------------
-    // 5. Comparar picos con elementos
-    // ------------------------------------------
     Match matches[64];
-    double tolerance = 1.0; // tolerancia en nm
+    double tolerance = 1.0;
     int match_count = match_elements(peaks, peak_count, elements, element_count, matches, tolerance);
 
-    // ------------------------------------------
-    // 6. Mostrar resultados
-    // ------------------------------------------
-    printf("\n===== RESULTADOS DEL ANALISIS =====\n");
+    printf("\n===== RESULTADOS DEL ANALISIS =====\n\n");
 
     if (match_count == 0) {
         printf("No se detectó ningún elemento.\n");
@@ -72,9 +54,6 @@ int main(int argc, char** argv) {
         }
     }
 
-    // ------------------------------------------
-    // 7. Liberar memoria
-    // ------------------------------------------
     free(spectrum);
     free(elements);
 

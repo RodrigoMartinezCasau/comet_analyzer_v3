@@ -6,23 +6,23 @@
 
 #define MAX_MATCHES 32   // Máximo de líneas detectadas
 
-// Estructura para almacenar coincidencias elemento-pico
+// Estructura para almacenar coincidencias elemento–pico
 typedef struct {
-    char element_name[32];  // "Hydrogen", "Sodium", etc.
-    double wavelength;       // línea detectada
-    double difference;       // diferencia respecto a la línea teórica
-    double probability;
+    char element_name[32]; // "Hydrogen", "Sodium", etc.
+    double wavelength;      // línea detectada
+    double difference;      // diferencia respecto a la línea teórica
+    double probability;     // probabilidad estimada
 } Match;
 
 /**
  * Detecta picos en el espectro.
  * Un pico es un punto cuya intensidad es mayor que sus vecinos.
- * 
- * spec     -> array con los datos
- * count    -> número de puntos
- * peaks    -> salida con las longitudes de onda detectadas como picos
- * 
- * return   -> número de picos encontrados
+ *
+ * spec      -> array con los datos
+ * count     -> número de puntos
+ * peaks     -> salida con las longitudes de onda detectadas como picos
+ *
+ * return    -> número de picos encontrados
  */
 int detect_peaks(DataPoint* spec, int count, double* peaks_out, int max_peaks);
 
