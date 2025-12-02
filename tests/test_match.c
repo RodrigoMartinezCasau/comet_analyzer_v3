@@ -2,12 +2,14 @@
 #include <math.h>
 #include "../include/element_db.h"
 #include "../include/spectrum_analyzer.h"
+#include <stdlib.h>
+#include <string.h>
 
 int main() {
     int elem_count = 0;
     Element* elements = get_known_elements(&elem_count);
 
-    double peaks[] = {656.0};  // Pico exacto de hidrógeno
+    double peaks[] = {656.0};  
     Match matches[10];
 
     int found = match_elements(peaks, 1, elements, elem_count, matches, 1.0);

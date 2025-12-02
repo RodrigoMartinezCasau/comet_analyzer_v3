@@ -4,6 +4,7 @@
 #include "element_db.h"
 #include "spectrum_analyzer.h"
 
+// Time to call all the strucks for each match and develop the report!
 int main(int argc, char** argv) {
 
     if (argc < 2) {

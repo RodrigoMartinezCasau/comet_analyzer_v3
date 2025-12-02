@@ -1,12 +1,11 @@
 #ifndef DATA_LOADER_H
 #define DATA_LOADER_H
 
+// We define a struck to determine each of the DataPoints based on:
 typedef struct {
-    double wavelength; // longitud de onda en nm
-    double intensity;  // intensidad normalizada
+    double wavelength; // The value of its wavelength 
+    double intensity;  // The value of its intensity
 } DataPoint;
 
-// Carga un archivo de espectro y devuelve un array dinámico.
 DataPoint* load_spectrum(const char *filename, int *count);
-
 #endif

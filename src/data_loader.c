@@ -1,5 +1,4 @@
-// data_loader.c
-// Lee archivo de espectro flexible y devuelve array dinámico
+// This file reads values from the .txt file and creates a dynamic array 
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,20 +7,21 @@
 DataPoint* load_spectrum(const char *filename, int *count) {
     *count = 0;
 
+    // First we check for possible bugs regarding to the File 
     FILE *file = fopen(filename, "r");
     if (!file) {
-        printf("Error: Could not open file'%s'\n", filename);
+        printf("Error: Could not open file'%s'\n", filename); 
         return NULL;
     }
 
+    // Then we scan the number of lines starting the count from 0 
     double w, i;
     int lines = 0;
-
-    // Contar líneas válidas
     while (fscanf(file, "%lf%*[ ,\t]%lf", &w, &i) == 2) {
         lines++;
     }
 
+    // File could be empty :(
     if (lines == 0) {
         printf("Error: The file '%s' is empty or wrongly formatted.\n", filename);
         fclose(file);
@@ -29,7 +29,7 @@ DataPoint* load_spectrum(const char *filename, int *count) {
     }
 
     rewind(file);
-
+    // Allocate the values of the variables for all data points
     DataPoint *data = malloc(sizeof(DataPoint) * lines);
     if (!data) {
         printf("Error: Insufficient memory.\n");
@@ -38,7 +38,7 @@ DataPoint* load_spectrum(const char *filename, int *count) {
     }
 
     int index = 0;
-    while (fscanf(file, "%lf%*[ ,\t]%lf", &w, &i) == 2) {
+    while (fscanf(file, "%lf%*[ ,\t]%lf", &w, &i) == 2) { // Cool trick to skip comas and spaces ;)
         data[index].wavelength = w;
         data[index].intensity = i;
         index++;

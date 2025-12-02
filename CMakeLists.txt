@@ -33,11 +33,17 @@ add_executable(test_loader tests/test_loader.c
 
 )
 
+target_include_directories(test_loader PRIVATE ${PROJECT_SOURCE_DIR}/include)
+
 add_executable(test_peaks tests/test_peaks.c
     src/spectrum_analyzer.c
 )
+
+target_include_directories(test_peaks PRIVATE ${PROJECT_SOURCE_DIR}/include)
 
 add_executable(test_match tests/test_match.c
     src/element_db.c
     src/spectrum_analyzer.c
 )
+
+target_include_directories(test_match PRIVATE ${PROJECT_SOURCE_DIR}/include)
