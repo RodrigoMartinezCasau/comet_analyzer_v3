@@ -7,6 +7,7 @@ cmake ..
 make
 
 2. Run
+cd comet_analyzer_v3
 ./build/comet_analyzer spectrum.txt
 
 3. Clean build
