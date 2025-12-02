@@ -30,6 +30,7 @@ target_include_directories(comet_analyzer PUBLIC
 
 add_executable(test_loader tests/test_loader.c
     src/data_loader.c
+
 )
 
 add_executable(test_peaks tests/test_peaks.c

@@ -10,7 +10,7 @@ DataPoint* load_spectrum(const char *filename, int *count) {
 
     FILE *file = fopen(filename, "r");
     if (!file) {
-        printf("Error: No se pudo abrir el archivo '%s'\n", filename);
+        printf("Error: Could not open file'%s'\n", filename);
         return NULL;
     }
 
@@ -23,7 +23,7 @@ DataPoint* load_spectrum(const char *filename, int *count) {
     }
 
     if (lines == 0) {
-        printf("Error: El archivo '%s' está vacío o mal formateado.\n", filename);
+        printf("Error: The file '%s' is empty or wrongly formatted.\n", filename);
         fclose(file);
         return NULL;
     }
@@ -32,7 +32,7 @@ DataPoint* load_spectrum(const char *filename, int *count) {
 
     DataPoint *data = malloc(sizeof(DataPoint) * lines);
     if (!data) {
-        printf("Error: No hay memoria suficiente.\n");
+        printf("Error: Insufficient memory.\n");
         fclose(file);
         return NULL;
     }

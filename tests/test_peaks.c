@@ -15,15 +15,15 @@ int main() {
     int found = detect_peaks(fake, 6, peaks, 10);
 
     if (found != 2) {
-        printf("[FAIL] detect_peaks() debería detectar 2 picos, detectó %d\n", found);
+        printf("[FAIL] detect_peaks() should detect 2 peaks, detected %d\n", found);
         return 1;
     }
 
     if (peaks[0] != 401 || peaks[1] != 501) {
-        printf("[FAIL] Longitudes incorrectas detectadas\n");
+        printf("[FAIL] Incorrect lengths detected\n");
         return 1;
     }
 
-    printf("[PASS] detect_peaks() detectó correctamente 2 picos\n");
+    printf("[PASS] detect_peaks() detected 2 peaks correctly\n");
     return 0;
 }
