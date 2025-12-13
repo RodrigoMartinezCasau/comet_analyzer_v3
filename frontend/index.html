@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Comet Analyzer v3</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1> COMET ANALYZER v3</h1>
+  <p class="subtitle">Spectral Composition Analysis Engine</p>
+
+  <div class="controls">
+    <input type="file" id="file-input">
+    <button id="analyze-btn" disabled>Analyze Spectrum</button>
+  </div>
+
+  <div class="panels">
+
+    <div class="panel">
+      <h2>Spectrum Input</h2>
+      <div id="spectrum-input" class="hidden"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Analysis Output</h2>
+      <div id="analysis-output"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
